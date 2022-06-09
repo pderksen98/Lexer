@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 14:16:54 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/05/27 12:57:09 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/06/09 18:07:44 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,26 @@ typedef enum e_ascii
 	e_PIPE = 124,
 }	t_ascii;
 
-typedef	enum s_type
+typedef enum s_type
 {
 	FILEE = 1,
 	WORD,
 	CMD,
 	ARG,
+	HERE_DOC_TEXT,
 	PIPE,
 	GREAT,
 	GREAT_GREAT,
 	SMALL,
 	SMALL_SMALL,
-	HERE_DOC_TEXT,
 }	t_type;
+
+typedef struct s_specify
+{
+	int	redirect;
+	int	here_doc;
+	int	command;
+}	t_specify;
 
 typedef struct s_token
 {
@@ -52,7 +59,7 @@ typedef struct s_token
 	t_type			type;
 }	t_token;
 
-typedef struct	s_prev
+typedef struct s_prev
 {
 	int	op;
 	int	h_d;
@@ -77,4 +84,7 @@ char	*quote(size_t *i, char *cmd_line, char *prev, char quot);
 char	*word_maker(size_t *i, char *cmd_line, char *prev);
 char	*between_quotes(char *cmd_line, size_t *i, char quote);
 void	print_link_list(t_list **tokens);
+void	token_specifier(t_list **tokens);
+void	word_specifier(t_token *token, t_specify *prev);
+void	adjust_specify_struct(t_specify *prev, int code);
 #endif

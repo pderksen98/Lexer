@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 11:34:47 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/09 14:56:40 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/06/09 17:03:22 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	call_functions(char *input)
 	if (check_quotes(input) == 1)
 		return ;
 	list = lexer(input);
+	token_specifier(&list);
 	print_link_list(&list);
 	return ;
 }
