@@ -14,12 +14,14 @@
 
 void	call_functions(char *input)
 {
-	t_token	*list;
+	t_list	*list;
 
 	list = NULL;
 	if (check_quotes(input) == 1)
 		return ;
-	//make_linked_list(&list, input);
+	list = lexer(input);
+	print_link_list(&list);
+	return ;
 }
 
 int	main(int argc, char **argv, char **envp)

@@ -23,7 +23,9 @@ endif
 
 SRCS := src/main.c \
 		src/quote.c \
-		# src/list.c 
+		src/list.c \
+		src/utils.c \
+		src/print.c
 HEADERFILES := lexer.h
 
 READLINE := -lreadline -I/Users/pderksen/.brew/Cellar/readline
@@ -35,7 +37,7 @@ $(NAME) : $(SRCS) $(LIBFT)
 		$(CC) $(CFLAGS) $(READLINE) -o $@ $^
 
 $(LIBFT) :
-	$(MAKE) -C libft
+	$(MAKE) bonus -C libft
 
 clean :
 	$(MAKE) clean -C libft 
