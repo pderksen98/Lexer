@@ -1,6 +1,11 @@
 # -*- Makefile -*-
 NAME := libft.a
-CFLAGS ?= -Wall -Wextra -Werror
+
+ifndef DEBUG
+CFLAGS := -Wall -Wextra -Werror
+else
+CFLAGS := -Wall -Wextra -Werror -fsanitize=address -g
+endif
 
 SRCS := \
 ft_atoi.c \
@@ -39,7 +44,7 @@ ft_strmapi.c \
 ft_striteri.c \
 ft_split_len.c \
 ft_strdup_c.c \
-ft_check_malloc.c 
+ft_check_malloc.c \
 
 SRCS_BONUS := \
 ft_lstadd_back.c \

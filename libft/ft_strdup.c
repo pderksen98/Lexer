@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/10/28 15:16:27 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/02/24 10:40:08 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/06/09 13:58:00 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ char	*ft_strdup(const char *s1)
 	char	*ptr;
 
 	i = 0;
-	length = ft_strlen(s1) + 1;
-	ptr = (char *)malloc(length * sizeof(char));
+	length = ft_strlen(s1);
+	ptr = (char *)malloc((length + 1) * sizeof(char));
 	if (ptr == NULL)
 		return (0);
 	while (i < length)

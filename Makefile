@@ -6,7 +6,7 @@
 #    By: pderksen <pderksen@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2022/05/19 14:17:02 by pderksen      #+#    #+#                  #
-#    Updated: 2022/05/26 15:00:41 by pderksen      ########   odam.nl          #
+#    Updated: 2022/06/09 14:54:04 by pderksen      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,12 @@ CFLAGS := -Wall -Wextra -Werror -fsanitize=address -g
 endif
 
 SRCS := src/main.c \
-		src/quote.c \
-		src/list.c \
-		src/utils.c \
-		src/print.c
+		src/check_quotes.c \
+		src/tokenizer.c \
+		src/operators.c \
+		src/words.c \
+		src/print.c \
+		src/utils.c
 HEADERFILES := lexer.h
 
 READLINE := -lreadline -I/Users/pderksen/.brew/Cellar/readline

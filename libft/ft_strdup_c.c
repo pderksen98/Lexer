@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/01/25 09:59:08 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/01/25 10:44:05 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/06/09 14:03:56 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strdup_c(char *line, char c)
 	len = 0;
 	while (line[len] != '\0' && line[len] != c)
 		len++;
-	newline = (char *)malloc(sizeof(char) * len);
+	newline = (char *)malloc(sizeof(char) * (len + 1));
 	if (!newline)
 		return (NULL);
 	i = 0;
