@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 11:34:47 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/09 17:03:22 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/06/15 16:03:51 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	main(int argc, char **argv, char **envp)
 	while (1)
 	{
 		line = readline("minishell>");
+		if (!line)
+			break ;
 		call_functions(line);
 		free(line);
 	}
