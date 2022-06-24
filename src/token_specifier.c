@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/09 17:00:53 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/09 18:07:21 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/06/24 14:34:46 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ void	adjust_specify_struct(t_specify *prev, int code)
 		prev->command = 1;
 }
 
-//WORD after redirect becomes of type FILEE
+//WORD after redirect becomes of type FILENAME
 //WORD after here_doc becomes of type HERE_DOC_TEXT
 //If there already is a command, WORD becomes ARG
-//If there is not a command yet, WORD becomes CMD
+//If there is not a command yet, WORD becomes CMD_CMD
 void	word_specifier(t_token *token, t_specify *prev)
 {
 	if (prev->redirect == 1)
 	{
-		token->type = FILEE;
+		token->type = FILENAME;
 		adjust_specify_struct(prev, 2);
 	}
 	else if (prev->here_doc == 1)
@@ -56,7 +56,7 @@ void	word_specifier(t_token *token, t_specify *prev)
 		adjust_specify_struct(prev, 4);
 	}
 	else if (prev->command == 1)
-		token->type = ARG;
+		token->type = CMD_ARG;
 	else if (prev->command == 0)
 	{
 		token->type = CMD;
@@ -79,10 +79,10 @@ void	token_specifier(t_list **tokens)
 	while (temp)
 	{
 		data = temp->ct;
-		if (data->type == GREAT || data->type == GREAT_GREAT || \
-				 data->type == SMALL)
+		if (data->type == REDIRECT || data->type == APPEND || \
+				 data->type == INPUT)
 			adjust_specify_struct(&prev, 1);
-		else if (data->type == SMALL_SMALL)
+		else if (data->type == HERE_DOC)
 			adjust_specify_struct(&prev, 3);
 		else if (data->type == PIPE)
 			adjust_specify_struct(&prev, 0);

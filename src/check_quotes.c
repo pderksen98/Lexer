@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/25 13:59:16 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/15 16:01:34 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/06/24 14:38:00 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ int	check_quotes(char *input)
 			i = search_matching_quote(input, input[i], (i + 1));
 			if (i == 0)
 			{
-				printf("Error: Not a matching single or double quote\n");
+				ft_putstr_fd("Error: Not a matching single or \
+					double quote\n", 2);
 				return (EXIT_FAILURE);
 			}
 			tokens++;

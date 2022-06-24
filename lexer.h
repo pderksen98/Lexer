@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 14:16:54 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/09 18:07:44 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/06/24 14:27:14 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,16 +34,16 @@ typedef enum e_ascii
 
 typedef enum s_type
 {
-	FILEE = 1,
-	WORD,
+	FILENAME,
 	CMD,
-	ARG,
-	HERE_DOC_TEXT,
+	CMD_ARG,
 	PIPE,
-	GREAT,
-	GREAT_GREAT,
-	SMALL,
-	SMALL_SMALL,
+	APPEND,
+	REDIRECT,
+	HERE_DOC,
+	INPUT,
+	HERE_DOC_TEXT,
+	WORD,
 }	t_type;
 
 typedef struct s_specify

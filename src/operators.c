@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/09 14:50:42 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/09 14:57:01 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/06/24 14:24:39 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ void	check_big(t_list **tokens, size_t *i, char *cmd_line)
 	if (cmd_line[*i + 1] == e_BIG)
 	{
 		(*i)++;
-		token_ct->type = GREAT_GREAT;
+		token_ct->type = APPEND;
 	}
 	else
-		token_ct->type = GREAT;
+		token_ct->type = REDIRECT;
 	new = ft_lstnew(token_ct);
 	ft_check_malloc(new);
 	ft_lstadd_back(tokens, new);
@@ -52,10 +52,10 @@ void	check_smal(t_list **tokens, size_t *i, char *cmd_line)
 	if (cmd_line[*i + 1] == e_SMALL)
 	{
 		(*i)++;
-		token_ct->type = SMALL_SMALL;
+		token_ct->type = HERE_DOC;
 	}
 	else
-		token_ct->type = SMALL;
+		token_ct->type = INPUT;
 	new = ft_lstnew(token_ct);
 	ft_check_malloc(new);
 	ft_lstadd_back(tokens, new);

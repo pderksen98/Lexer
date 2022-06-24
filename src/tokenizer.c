@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/27 12:04:55 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/09 14:54:55 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/06/24 14:36:35 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	split_cmd_line(t_list **tokens, size_t *i, char c, char *cmd_line)
 		(*i)++;
 }
 
-//Get the cmd_line and initializes the linked list
-//When split_cmd_line funciton returns current char is again given to
+//Receives the cmd_line and initializes the linked list
+//When split_cmd_line function returns, current char is again given to
 //.... the split_cmd_line funcion
 //breaks out of the loop when end of line is reached
 //Linked list with tokens is returned
