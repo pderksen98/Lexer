@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/09 14:43:44 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/09 14:57:46 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/07/01 13:16:01 by pieterderks   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 //Returns 0 if the current char is (>),(<),( ),(|)
 //Returns 1 if the current char is ('),(")
 //Returns 2 if the current char is a printable ascii
+//Returns 3 if the current char is a dollar sign
 int	check_next_char(char c)
 {
 	if (c == e_BIG)
@@ -27,6 +28,8 @@ int	check_next_char(char c)
 		return (0);
 	else if (c == s_QUOTE || c == d_QUOTE)
 		return (1);
+	else if (c == e_DOLLAR)
+		return (3);
 	else if (ft_isprint(c))
 		return (2);
 	return (0);
@@ -95,7 +98,8 @@ char	*create_word(char *cmd_line, size_t *i)
 	{
 		if (cmd_line[j] == e_SPACE || cmd_line[j] == e_BIG || \
 			cmd_line[j] == e_SMALL || cmd_line[j] == e_PIPE || \
-			cmd_line[j] == s_QUOTE || cmd_line[j] == d_QUOTE)
+			cmd_line[j] == s_QUOTE || cmd_line[j] == d_QUOTE ||
+			cmd_line[j] == e_DOLLAR)
 			break ;
 		j++;
 	}
@@ -126,5 +130,7 @@ char	*word_maker(size_t *i, char *cmd_line, char *prev)
 	}
 	if (check_next_char(cmd_line[*i]) == 1)
 		result = quote(i, cmd_line, result, cmd_line[*i]);
+	else if (check_next_char(cmd_line[*i] == 3))
+		result = expand_word(i, cmd_line, result);
 	return (result);
 }

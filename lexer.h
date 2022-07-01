@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 14:16:54 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/24 14:27:14 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/07/01 12:33:34 by pieterderks   ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef enum e_ascii
 	s_QUOTE = 39,
 	d_QUOTE = 34,
 	e_PIPE = 124,
+	e_DOLLAR = 36,
 }	t_ascii;
 
 typedef enum s_type
