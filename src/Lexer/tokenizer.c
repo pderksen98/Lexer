@@ -6,23 +6,25 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/27 12:04:55 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/07/03 21:44:44 by pieterderks   ########   odam.nl         */
+/*   Updated: 2022/07/04 14:52:54 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lexer.h"
+#include "../../lexer.h"
 
 //Calls the quote function if the current char is a (') or (")
 //Els the word_maker function is called
 //A token is created for the final returned string with type WORD
-void	string_maker(t_list **tokens, size_t *i, char *cmd_line, char c, char **envp)
+void	string_maker(t_list **tokens, size_t *i, char *cmd_line, char **envp)
 {
 	t_list	*new;
 	t_token	*token_ct;
 	char	*string;
+	char	c;
 
+	c = cmd_line[*i];
 	if (c == s_QUOTE || c == d_QUOTE)
-		string = quote(i, cmd_line, NULL, c, envp);
+		string = quote(i, cmd_line, NULL, envp);
 	else if (c == e_DOLLAR)
 		string = expand_word(i, cmd_line, NULL, envp);
 	else
@@ -42,8 +44,11 @@ void	string_maker(t_list **tokens, size_t *i, char *cmd_line, char c, char **env
 }
 
 //Checks the current character and calls the corresponing functions
-void	split_cmd_line(t_list **tokens, size_t *i, char c, char *cmd_line, char **envp)
+void	split_cmd_line(t_list **tokens, size_t *i, char *cmd_line, char **envp)
 {
+	char	c;
+
+	c = cmd_line[*i];
 	if (c == e_SPACE)
 	{
 		(*i)++;
@@ -56,7 +61,7 @@ void	split_cmd_line(t_list **tokens, size_t *i, char c, char *cmd_line, char **e
 	else if (c == e_PIPE)
 		pipe(tokens, i);
 	else if (c == s_QUOTE || c == d_QUOTE || ft_isprint(c))
-		string_maker(tokens, i, cmd_line, c, envp);
+		string_maker(tokens, i, cmd_line, envp);
 	else
 		(*i)++;
 }
@@ -77,7 +82,7 @@ t_list	*lexer(char *cmd_line, char **envp)
 	input_len = ft_strlen(cmd_line);
 	while (i < input_len)
 	{
-		split_cmd_line(&list, &i, cmd_line[i], cmd_line, envp);
+		split_cmd_line(&list, &i, cmd_line, envp);
 	}
 	return (list);
 }

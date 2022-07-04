@@ -6,7 +6,7 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 14:16:54 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/07/04 03:18:24 by pieterderks   ########   odam.nl         */
+/*   Updated: 2022/07/04 15:51:14 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,27 +67,37 @@ typedef struct s_prev
 	int	cmd;
 }	t_prev;
 
+//Main
 int		main(int argc, char **argv, char **envp);
 void	call_functions(char *input, char **envp);
-int		check_quotes(char *input);
+//Lexer
 int		search_matching_quote(char *input, char quote, int i);
-t_list	*lexer(char *cmd_line, char **envp);
-void	split_cmd_line(t_list **tokens, size_t *i, char c, char *cmd_line, char **envp);
-void	pipe(t_list **tokens, size_t *i);
-void	check_smal(t_list **tokens, size_t *i, char *cmd_line);
+int		check_quotes(char *input);
 void	check_big(t_list **tokens, size_t *i, char *cmd_line);
-char	*ft_strdup_len(const char *str, size_t len);
-size_t	ft_strlen_c(const char *str, int c);
-void	string_maker(t_list **tokens, size_t *i, char *cmd_line, char c, char **envp);
-int		check_next_char(char c);
-char	*create_word(char *cmd_line, size_t *i);
-char	*quote(size_t *i, char *cmd_line, char *prev, char quot, char **envp);
-char	*word_maker(size_t *i, char *cmd_line, char *prev, char **envp);
-char	*between_quotes(char *cmd_line, size_t *i, char quote, char **envp);
+void	check_smal(t_list **tokens, size_t *i, char *cmd_line);
+void	pipe(t_list **tokens, size_t *i);
 void	print_link_list(t_list **tokens);
-void	token_specifier(t_list **tokens);
-void	word_specifier(t_token *token, t_specify *prev);
 void	adjust_specify_struct(t_specify *prev, int code);
+void	word_specifier(t_token *token, t_specify *prev);
+void	token_specifier(t_list **tokens);
+void	string_maker(t_list **tokens, size_t *i, char *cmd_line, char **envp);
+void	split_cmd_line(t_list **tokens, size_t *i, char *cmd_line, char **envp);
+t_list	*lexer(char *cmd_line, char **envp);
+size_t	ft_strlen_c(const char *str, int c);
+char	*ft_strdup_len(const char *str, size_t len);
+char	*word_maker(size_t *i, char *cmd_line, char *prev, char **envp);
+char	*create_word(char *cmd_line, size_t *i);
+char	*quote(size_t *i, char *cmd_line, char *prev, char **envp);
+char	*between_quotes(char *cmd_line, size_t *i, char quote, char **envp);
+int		check_next_char(char c);
+//Expander
 char	*expand_word(size_t *i, char *cmd_line, char *prev, char **envp);
-char	*expander(size_t *i, char *cmd_line, char **envp, int flag);
+char	*expander(size_t *i, char *cmd_line, char **envp);
+char	*variable_with_zero_length(char c, int flag);
+int		check_char_expander(char c);
+char	*variable_finder(char *variable, size_t len, char **envp);
+char	*check_quote_expander(char *string, char **envp, char *prev, size_t *j);
+char	*create_word_q(char *string, size_t *j);
+char	*expand_for_quote(size_t *j, char *string, char *prev, char **envp);
+char	*expander_q(size_t *j, char *string, char **envp);
 #endif

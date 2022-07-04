@@ -6,11 +6,11 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/09 14:50:42 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/24 14:24:39 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/07/04 14:52:43 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lexer.h"
+#include "../../lexer.h"
 
 //checks if after the big_redirect(>) another big_redirect comes
 //if yes, then type is >>

@@ -6,11 +6,11 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/09 17:36:39 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/24 14:30:55 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/07/04 14:52:47 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lexer.h"
+#include "../../lexer.h"
 
 void	print_link_list(t_list **tokens)
 {

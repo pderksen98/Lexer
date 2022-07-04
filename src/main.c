@@ -6,31 +6,11 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/19 11:34:47 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/07/04 00:50:44 by pieterderks   ########   odam.nl         */
+/*   Updated: 2022/07/04 15:43:53 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lexer.h"
-
-char	**copy_envp(char **envp)
-{
-	char	**env;
-	int		i;
-
-	i = 0;
-	while (envp[i])
-		i++;
-	env = malloc(sizeof(char *) * (i + 1));
-	ft_check_malloc(env);
-	i = 0;
-	while (envp[i])
-	{
-		env[i] = ft_strdup(envp[i]);
-		ft_check_malloc(env[i]);
-		i++;
-	}
-	return (env);
-}
 
 //Receives the cmd_line (input)
 //calls the different functions with the input
@@ -53,10 +33,8 @@ void	call_functions(char *input, char **envp)
 int	main(int argc, char **argv, char **envp)
 {
 	char	*line;
-	char	**env;
 
 	(void)argv;
-	env = copy_envp(envp);
 	if (argc != 1 || argv[1])
 	{
 		printf("This program does nog accept arguments\n");
@@ -67,7 +45,7 @@ int	main(int argc, char **argv, char **envp)
 		line = readline("minishell>");
 		if (!line)
 			break ;
-		call_functions(line, env);
+		call_functions(line, envp);
 		free(line);
 	}
 	return (0);

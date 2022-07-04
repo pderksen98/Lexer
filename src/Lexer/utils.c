@@ -6,11 +6,11 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/09 14:49:58 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/09 14:52:47 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/07/04 14:53:19 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lexer.h"
+#include "../../lexer.h"
 
 //duplicates the string 'str' up to len characteres
 char	*ft_strdup_len(const char *str, size_t len)

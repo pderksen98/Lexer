@@ -6,11 +6,11 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/05/25 13:59:16 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/24 14:38:00 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/07/04 14:52:40 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lexer.h"
+#include "../../lexer.h"
 
 //loops through the string to find the matching single or double quote
 int	search_matching_quote(char *input, char quote, int i)

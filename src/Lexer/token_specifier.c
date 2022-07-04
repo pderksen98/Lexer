@@ -6,11 +6,11 @@
 /*   By: pderksen <pderksen@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2022/06/09 17:00:53 by pderksen      #+#    #+#                 */
-/*   Updated: 2022/06/24 14:34:46 by pderksen      ########   odam.nl         */
+/*   Updated: 2022/07/04 14:52:51 by pderksen      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../lexer.h"
+#include "../../lexer.h"
 
 //Gets called to change the values in t_specify
 //0 -> everything back to zero
